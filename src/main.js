@@ -5,13 +5,52 @@ import './main.scss';
 import Node from './Components/Node/node';
 import Edge from './Components/Edge/edge';
 import mockData from '../src/mockData.json';
+import configuration from '../src/configuration.json';
+import newData from '../src/new.json';
 
+let _edges = [];
+let _nodes = [];
+let _maxLen = 0;
+let _totalLevels = 0;
+let _levelledData = {};
 OfflinePluginRuntime.install();
 
 class HomePage extends React.Component {
     constructor() {
         super();
-        this.state = Object.assign({}, mockData);
+        this.attachPositions = this.attachPositions.bind(this);
+        this.state = Object.assign({}, configuration);
+    }
+
+    componentWillMount() {
+        this.formatData(newData);
+        this.attachPositions();
+    }
+
+    attachPositions() {
+        _nodes.map((node) => {
+            node.cx = (_levelledData[node.level].indexOf(node.id) + 1) * (configuration.containerWidth / (_levelledData[node.level].length + 1));
+            node.cy = configuration.containerHeight * node.level / (_totalLevels + 1);
+            return node;
+        });
+        let state = this.state;
+        state = Object.assign(state, {nodes: _nodes, edges: _edges})
+        this.setState(state);
+    }
+
+    formatData(data, level) {
+        level = level || '1';
+        if (!_levelledData[level]) {
+            _levelledData[level] = [];
+        }
+        _levelledData[level].push(data.id);
+        _nodes[data.id] = { id: data.id, text: data.text, level: level };
+        _maxLen = Math.max(_maxLen, data.children.length);
+        data.children.length > 0 && data.children.map((child) => {
+            _totalLevels++;
+            _edges.push({ from: data.id, to: child.id });
+            this.formatData(child, String(Number(level) + 1));
+        });
     }
 
     render() {
