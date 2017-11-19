@@ -1,0 +1,40 @@
+{
+    "containerWidth": "1000",
+    "containerHeight": "600",
+    "nodeColor": "rgb(70, 70, 70)",
+    "textFontSize": "25",
+    "textColor": "white",
+    "edgeColor": "orange",
+    "edgeThickness": "5",
+    "nodeRadius": "25",
+    "edges": [
+        {
+            "from": 1,
+            "to": 2
+        },
+        {
+            "from": 1,
+            "to": 3
+        }
+    ],
+    "nodes": {
+        "1": {
+            "id": 1,
+            "cx": 500,
+            "cy": 50,
+            "text": "A"
+        },
+        "2": {
+            "id": 2,
+            "cx": 380,
+            "cy": 140,
+            "text": "B"
+        },
+        "3": {
+            "id": 2,
+            "cx": 620,
+            "cy": 140,
+            "text": "C"
+        }
+    }
+}
