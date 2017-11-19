@@ -3,4 +3,7 @@ svg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: #f5f5f5;
+    background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
+    border-bottom: 1px solid #CCC;
 }

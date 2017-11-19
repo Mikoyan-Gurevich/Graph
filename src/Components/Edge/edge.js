@@ -11,10 +11,10 @@ class Edge extends React.Component {
         let { nodes, from, to } = this.props;
         return (
             <line
-                x1={nodes[from].node.cx}
-                x2={nodes[to].node.cx}
-                y1={nodes[from].node.cy}
-                y2={nodes[to].node.cy}
+                x1={nodes[from].cx}
+                x2={nodes[to].cx}
+                y1={nodes[from].cy}
+                y2={nodes[to].cy}
                 stroke={this.props.edgeColor}
                 strokeWidth={this.props.edgeThickness}
             />

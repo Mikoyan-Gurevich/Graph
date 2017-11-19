@@ -13,16 +13,16 @@ class Node extends React.Component {
                 <circle
                     cx={this.props.node.cx}
                     cy={this.props.node.cy}
-                    r={this.props.node.r}
+                    r={this.props.nodeRadius}
                     fill={this.props.nodeColor}
                 />
                 <text
-                    x={this.props.text.x}
-                    y={this.props.text.y}
+                    x={this.props.node.cx}
+                    y={this.props.node.cy + (this.props.fontSize/2.5)}
                     fontSize={this.props.fontSize}
                     textAnchor="middle"
                     fill={this.props.textColor}
-                >{this.props.text.text}
+                >{this.props.node.text}
                 </text>
             </g>
         );
