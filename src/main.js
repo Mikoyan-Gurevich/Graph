@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './main.scss';
 import Node from './Components/Node/node';
-import NodeText from './Components/NodeText/nodeText';
 
 OfflinePluginRuntime.install();
 
@@ -73,12 +72,7 @@ class HomePage extends React.Component {
                     {/* For every node there should be a combination of circle and a text. */}
                     {nodes.map((n, k) => {
                         return (
-                            <Node key={k} color={nodesColor} node={n.node} />
-                        );
-                    })}
-                    {nodes.map((n, k) => {
-                        return (
-                            <NodeText key={k} color={textColor} fontSize={textFontSize} text={n.text} />
+                            <Node key={k} nodeColor={nodesColor} node={n.node} textColor={textColor} fontSize={textFontSize} text={n.text} />
                         );
                     })}
                 </svg>
