@@ -5,12 +5,71 @@
         {
             "id": 2,
             "text": "B",
-            "children": []
+            "children": [
+                {
+                    "id": 4,
+                    "text": "D",
+                    "children": []
+                },
+                {
+                    "id": 5,
+                    "text": "E",
+                    "children": []
+                },
+                {
+                    "id": 6,
+                    "text": "F",
+                    "children": [
+                        {
+                            "id": 9,
+                            "text": "I",
+                            "children": [
+                                {
+                                    "id": 10,
+                                    "text": "J",
+                                    "children": []
+                                },
+                                {
+                                    "id": 11,
+                                    "text": "K",
+                                    "children": []
+                                },
+                                {
+                                    "id": 12,
+                                    "text": "L",
+                                    "children": []
+                                },
+                                {
+                                    "id": 13,
+                                    "text": "M",
+                                    "children": []
+                                },
+                                {
+                                    "id": 14,
+                                    "text": "N",
+                                    "children": []
+                                }
+                            ]
+                        } 
+                    ]
+                } 
+            ]
         },
         {
             "id": 3,
             "text": "C",
-            "children": []
+            "children": [
+                {
+                    "id": 7,
+                    "text": "G",
+                    "children": []
+                },
+                {
+                    "id": 8,
+                    "text": "H",
+                    "children": []
+                } 
+            ]
         }
     ]
 }

@@ -10,7 +10,6 @@ import configuration from '../src/configuration.json';
 let _edges = [];
 let _nodes = [];
 let _maxLen = 0;
-let _totalLevels = 0;
 let _levelledData = {};
 OfflinePluginRuntime.install();
 
@@ -29,7 +28,7 @@ class HomePage extends React.Component {
     attachPositions() {
         _nodes.map((node) => {
             node.cx = (_levelledData[node.level].indexOf(node.id) + 1) * (configuration.containerWidth / (_levelledData[node.level].length + 1));
-            node.cy = configuration.containerHeight * node.level / (_totalLevels + 1);
+            node.cy = (configuration.containerHeight * node.level) / (Object.keys(_levelledData).length + 1);
             return node;
         });
         let state = this.state;
@@ -46,7 +45,6 @@ class HomePage extends React.Component {
         _nodes[data.id] = { id: data.id, text: data.text, level: level };
         _maxLen = Math.max(_maxLen, data.children.length);
         data.children.length > 0 && data.children.map((child) => {
-            _totalLevels++;
             _edges.push({ from: data.id, to: child.id });
             this.formatData(child, String(Number(level) + 1));
         });
