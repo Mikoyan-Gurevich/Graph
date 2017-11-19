@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './main.scss';
+import Node from './Components/Node/node';
+import NodeText from './Components/NodeText/nodeText';
 
 OfflinePluginRuntime.install();
 
@@ -21,8 +23,8 @@ class HomePage extends React.Component {
                     <line x1="500" x2="380" y1="50" y2="140" stroke="orange" strokeWidth="5" />
                     <line x1="500" x2="620" y1="50" y2="140" stroke="orange" strokeWidth="5" />
                     {/* For every node there should be a combination of circle and a text. */}
-                    <circle cx="500" cy="50" r="25" fill="rgb(70, 70, 70)" />
-                    <text x="500" y="59" fontSize="25" textAnchor="middle" fill="white">A</text>
+                    <Node />
+                    <NodeText/>
                     <circle cx="380" cy="140" r="25" fill="rgb(70, 70, 70)" />
                     <text x="380" y="149" fontSize="25" textAnchor="middle" fill="white">B</text>
                     <circle cx="620" cy="140" r="25" fill="rgb(70, 70, 70)" />
