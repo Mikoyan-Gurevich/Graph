@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './main.scss';
 import Node from './Components/Node/node';
+import Edge from './Components/Edge/edge';
 
 OfflinePluginRuntime.install();
 
@@ -10,11 +11,23 @@ class HomePage extends React.Component {
     constructor() {
         super();
         this.state = {
-            nodesColor: 'rgb(70, 70, 70)',
+            nodeColor: 'rgb(70, 70, 70)',
             textFontSize: 25,
             textColor: 'white',
-            nodes: [
+            edgeColor: 'orange',
+            edgeThickness: '5',
+            edges: [
                 {
+                    from: 1,
+                    to: 2
+                },
+                {
+                    from: 1,
+                    to: 3
+                }
+            ],
+            nodes: {
+                1: {
                     id: 1,
                     node: {
                         cx: 500,
@@ -28,8 +41,8 @@ class HomePage extends React.Component {
                     }
 
                 },
-                {
-                    id: 1,
+                2: {
+                    id: 2,
                     node: {
                         cx: 380,
                         cy: 140,
@@ -42,8 +55,8 @@ class HomePage extends React.Component {
                     }
 
                 },
-                {
-                    id: 1,
+                3: {
+                    id: 2,
                     node: {
                         cx: 620,
                         cy: 140,
@@ -56,23 +69,37 @@ class HomePage extends React.Component {
                     }
 
                 }
-            ]
+            }
         };
     }
 
     render() {
-        const { nodesColor, textFontSize, textColor, nodes } = this.state;
+        const { nodeColor, textFontSize, textColor, nodes, edges, edgeColor, edgeThickness } = this.state;
         return (
             <div>
                 <svg version="1.1" baseProfile="full" width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
                     <rect width="100%" height="100%" fill="rgb(244, 244, 244)" style={{ 'stroke': 'currentColor' }} />
                     {/* For every edge there will be a line, and these lines will always be below the nodes. so we should draw lines first and then nodes. */}
-                    <line x1="500" x2="380" y1="50" y2="140" stroke="orange" strokeWidth="5" />
-                    <line x1="500" x2="620" y1="50" y2="140" stroke="orange" strokeWidth="5" />
+                    {edges.map((e, k) => {
+                        return <Edge
+                            key={k}
+                            edgeColor={edgeColor}
+                            edgeThickness={edgeThickness}
+                            from={e.from}
+                            to={e.to}
+                            nodes={nodes}
+                        />
+                    })}
                     {/* For every node there should be a combination of circle and a text. */}
-                    {nodes.map((n, k) => {
+                    {Object.keys(nodes).map((n, k) => {
                         return (
-                            <Node key={k} nodeColor={nodesColor} node={n.node} textColor={textColor} fontSize={textFontSize} text={n.text} />
+                            <Node key={k}
+                                nodeColor={nodeColor}
+                                node={nodes[n].node}
+                                textColor={textColor}
+                                fontSize={textFontSize}
+                                text={nodes[n].text}
+                            />
                         );
                     })}
                 </svg>
