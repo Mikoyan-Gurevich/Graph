@@ -1,0 +1,16 @@
+{
+    "id"          : 1,
+    "text"        : "A",
+    "children"    : [
+        {
+            "id": 2,
+            "text": "B",
+            "children": []
+        },
+        {
+            "id": 3,
+            "text": "C",
+            "children": []
+        }
+    ]
+}
