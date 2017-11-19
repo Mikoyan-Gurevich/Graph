@@ -9,7 +9,7 @@ class Node extends React.Component {
 
     render() {
         return (
-            <text x="500" y="59" fontSize="25" textAnchor="middle" fill="white">A</text>
+            <text x={this.props.text.x} y={this.props.text.y} fontSize={this.props.fontSize} textAnchor="middle" fill={this.props.color}>A</text>
         );
     }
 }

@@ -9,7 +9,7 @@ class Node extends React.Component {
 
     render() {
         return (
-            <circle cx="500" cy="50" r="25" fill="rgb(70, 70, 70)" />
+            <circle cx={this.props.node.cx} cy={this.props.node.cy} r={this.props.node.r} fill={this.props.color} />
         );
     }
 }
