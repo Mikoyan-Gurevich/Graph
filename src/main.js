@@ -6,7 +6,6 @@ import Node from './Components/Node/node';
 import Edge from './Components/Edge/edge';
 import mockData from '../src/mockData.json';
 import configuration from '../src/configuration.json';
-import newData from '../src/new.json';
 
 let _edges = [];
 let _nodes = [];
@@ -23,7 +22,7 @@ class HomePage extends React.Component {
     }
 
     componentWillMount() {
-        this.formatData(newData);
+        this.formatData(mockData);
         this.attachPositions();
     }
 
