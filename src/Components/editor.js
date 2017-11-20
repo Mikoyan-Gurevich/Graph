@@ -16,9 +16,10 @@ class Editor extends React.Component {
     }
 
     render() {
+        let {data} = this.state;
         return (
             <div className='editor'>
-                <textarea value={this.state.data} onChange={this.dataChanged} />
+                <textarea value={data} onChange={this.dataChanged} />
             </div>
         );
     }
