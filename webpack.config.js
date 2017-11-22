@@ -52,7 +52,7 @@ plugins: [
     new HtmlWebpackPlugin({
         filename: 'index.html', // The path specified here gets appended to the path provided in output section above
         path: path.resolve(__dirname, 'build'),
-        title: 'Graph Query',
+        title: 'Graph JSON',
         template: 'index.ejs'
     }),
     //new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}}),
