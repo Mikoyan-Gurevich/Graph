@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
+const JSONTextArea = styled.textarea`
+    width:  700px;
+    height: 100%;
+    resize: none;
+`;
 
 class Editor extends React.Component {
     constructor(props) {
@@ -19,7 +25,7 @@ class Editor extends React.Component {
         let {data} = this.state;
         return (
             <div className='editor'>
-                <textarea value={data} onChange={this.dataChanged} />
+                <JSONTextArea value={data} onChange={this.dataChanged} />
             </div>
         );
     }

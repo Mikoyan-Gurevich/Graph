@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-import './main.scss';
 import Tree from './Components/tree';
 import Editor from './Components/editor';
 import mockData from '../src/mockData.json';
 import configuration from '../src/configuration.json';
+import styled from 'styled-components';
 
 OfflinePluginRuntime.install();
+
+const MainDiv = styled.div`
+    display: flex;
+    justify-content: space-around;
+`;
+
+const ButtonDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 class Homepage extends React.Component {
     constructor() {
@@ -32,14 +43,14 @@ class Homepage extends React.Component {
 
     render() {
         let { data, configuration } = this.state;
-        return (<div className='main'>
+        return (<MainDiv>
             <Editor configuration={configuration} mockData={data} updateRawData={this.updateRawData} />
-            <div className='buttons'>
+            <ButtonDiv className='buttons'>
                 <button>&lt; </button>
                 <button onClick={this.getTreeFromJSON}>&gt; </button>
-            </div>
+            </ButtonDiv>
             <Tree configuration={configuration} mockData={data} />
-        </div>);
+        </MainDiv>);
     }
 }
 

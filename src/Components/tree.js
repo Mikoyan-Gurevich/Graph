@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Node from './node';
 import Edge from './edge';
+import styled from 'styled-components';
 
 let _edges = [];
 let _nodes = [];
 let _maxLen = 0;
 let _levelledData = {};
+
+const TreeSVG = styled.svg`
+    background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
+    border-bottom: 1px solid #CCC;
+`;
 
 class Tree extends React.Component {
     constructor(props) {
@@ -48,7 +54,7 @@ class Tree extends React.Component {
     render() {
         const { nodeColor, textFontSize, textColor, nodes, edges, edgeColor, edgeThickness, nodeRadius, containerWidth, containerHeight } = this.state;
         return (
-            <svg version="1.1" baseProfile="full" width={containerWidth} height={containerHeight} xmlns="http://www.w3.org/2000/svg">
+            <TreeSVG version="1.1" baseProfile="full" width={containerWidth} height={containerHeight} xmlns="http://www.w3.org/2000/svg">
             {/* For every edge there will be a line, and these lines will always be below the nodes. so we should draw lines first and then nodes. */}
             {edges.map((e, k) => {
                 return <Edge
@@ -72,7 +78,7 @@ class Tree extends React.Component {
                     />
                 );
             })}
-        </svg>
+        </TreeSVG>
         );
     }
 }
