@@ -37,6 +37,7 @@ module: {
         }
     ]
 },
+// Don't change the order of plugins, This might break prod config.
 plugins: [
     new CleanWebpackPlugin(['build']),
     new webpack.HotModuleReplacementPlugin(),
