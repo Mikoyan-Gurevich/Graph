@@ -33,7 +33,7 @@
     "webpack-hot-middleware": "^2.19.1"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "build": "./node_modules/.bin/webpack --config webpack.prod.config.js",
     "start": "node web-server.js",
     "lint": "./node_modules/.bin/eslint --fix ./src"
   },
