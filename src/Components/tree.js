@@ -35,10 +35,10 @@ class Tree extends React.Component {
     }
 
     attachPositions() {
-        _nodes.map((node) => {
-            node.cx = (_levelledData[node.level].indexOf(node.id) + 1) * (this.props.configuration.containerWidth / (_levelledData[node.level].length + 1));
-            node.cy = (this.props.configuration.containerHeight * node.level) / (Object.keys(_levelledData).length + 1);
-            return node;
+        Object.keys(_nodes).map((key) => {
+            _nodes[key].cx = (_levelledData[_nodes[key].level].indexOf(_nodes[key].id) + 1) * (this.props.configuration.containerWidth / (_levelledData[_nodes[key].level].length + 1));
+            _nodes[key].cy = (this.props.configuration.containerHeight * _nodes[key].level) / (Object.keys(_levelledData).length + 1);
+            return _nodes[key];
         });
         let state = this.state;
         state = Object.assign(state, { nodes: _nodes, edges: _edges })
