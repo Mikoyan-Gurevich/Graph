@@ -5,7 +5,9 @@ import styled from 'styled-components';
 const JSONTextArea = styled.textarea`
     width:  700px;
     height: 100%;
-    resize: none;
+    resize: none;    
+    border: none;
+    background-image: linear-gradient(to bottom,#FFFFFF,#e2e2e2);
 `;
 
 class Editor extends React.Component {
@@ -24,7 +26,7 @@ class Editor extends React.Component {
     render() {
         let {data} = this.state;
         return (
-            <div className='editor'>
+            <div>
                 <JSONTextArea value={data} onChange={this.dataChanged} />
             </div>
         );

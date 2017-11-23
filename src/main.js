@@ -20,6 +20,13 @@ const ButtonDiv = styled.div`
     justify-content: center;
 `;
 
+const Title = styled.h1`
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    background-image: linear-gradient(to bottom,#FFFFFF,#e2e2e2);
+`;
+
 class Homepage extends React.Component {
     constructor() {
         super();
@@ -43,14 +50,17 @@ class Homepage extends React.Component {
 
     render() {
         let { data, configuration } = this.state;
-        return (<MainDiv>
-            <Editor configuration={configuration} mockData={data} updateRawData={this.updateRawData} />
-            <ButtonDiv className='buttons'>
-                <button>&lt; </button>
-                <button onClick={this.getTreeFromJSON}>&gt; </button>
-            </ButtonDiv>
-            <Tree configuration={configuration} mockData={data} />
-        </MainDiv>);
+        return (
+            <div>
+                <Title>JSON to Tree converter</Title>
+                <MainDiv>
+                    <Editor configuration={configuration} mockData={data} updateRawData={this.updateRawData} />
+                    <ButtonDiv>
+                        <button onClick={this.getTreeFromJSON}>Convert </button>
+                    </ButtonDiv>
+                    <Tree configuration={configuration} mockData={data} />
+                </MainDiv>
+            </div>);
     }
 }
 

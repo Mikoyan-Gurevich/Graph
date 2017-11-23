@@ -11,7 +11,6 @@ let _levelledData = {};
 
 const TreeSVG = styled.svg`
     background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
-    border-bottom: 1px solid #CCC;
 `;
 
 class Tree extends React.Component {
