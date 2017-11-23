@@ -26,6 +26,15 @@ class Tree extends React.Component {
         this.attachPositions();
     }
 
+    componentWillReceiveProps(nextProps) {
+        _edges = [];
+        _nodes = [];
+        _maxLen = 0;
+        _levelledData = {};
+        this.formatData(nextProps.mockData);
+        this.attachPositions();
+    }
+
     attachPositions() {
         _nodes.map((node) => {
             node.cx = (_levelledData[node.level].indexOf(node.id) + 1) * (this.props.configuration.containerWidth / (_levelledData[node.level].length + 1));
@@ -33,7 +42,7 @@ class Tree extends React.Component {
             return node;
         });
         let state = this.state;
-        state = Object.assign(state, {nodes: _nodes, edges: _edges})
+        state = Object.assign(state, { nodes: _nodes, edges: _edges })
         this.setState(state);
     }
 
@@ -55,30 +64,30 @@ class Tree extends React.Component {
         const { nodeColor, textFontSize, textColor, nodes, edges, edgeColor, edgeThickness, nodeRadius, containerWidth, containerHeight } = this.state;
         return (
             <TreeSVG version="1.1" baseProfile="full" width={containerWidth} height={containerHeight} xmlns="http://www.w3.org/2000/svg">
-            {/* For every edge there will be a line, and these lines will always be below the nodes. so we should draw lines first and then nodes. */}
-            {edges.map((e, k) => {
-                return <Edge
-                    key={k}
-                    edgeColor={edgeColor}
-                    edgeThickness={edgeThickness}
-                    from={e.from}
-                    to={e.to}
-                    nodes={nodes}
-                />
-            })}
-            {/* For every node there should be a combination of circle and a text. */}
-            {Object.keys(nodes).map((n, k) => {
-                return (
-                    <Node key={k}
-                        nodeColor={nodeColor}
-                        node={nodes[n]}
-                        textColor={textColor}
-                        fontSize={textFontSize}
-                        nodeRadius={nodeRadius}
+                {/* For every edge there will be a line, and these lines will always be below the nodes. so we should draw lines first and then nodes. */}
+                {edges.map((e, k) => {
+                    return <Edge
+                        key={k}
+                        edgeColor={edgeColor}
+                        edgeThickness={edgeThickness}
+                        from={e.from}
+                        to={e.to}
+                        nodes={nodes}
                     />
-                );
-            })}
-        </TreeSVG>
+                })}
+                {/* For every node there should be a combination of circle and a text. */}
+                {Object.keys(nodes).map((n, k) => {
+                    return (
+                        <Node key={k}
+                            nodeColor={nodeColor}
+                            node={nodes[n]}
+                            textColor={textColor}
+                            fontSize={textFontSize}
+                            nodeRadius={nodeRadius}
+                        />
+                    );
+                })}
+            </TreeSVG>
         );
     }
 }

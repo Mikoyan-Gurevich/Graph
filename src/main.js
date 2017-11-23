@@ -38,7 +38,7 @@ class Homepage extends React.Component {
 
     getTreeFromJSON() {
         let rawTextData = this.state.rawTextData;
-        this.setState({ data: rawTextData });
+        this.setState({ data: JSON.parse(rawTextData) });
     }
 
     render() {
